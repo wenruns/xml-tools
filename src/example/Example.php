@@ -6,7 +6,7 @@
  * Time: 15:32
  */
 
-namespace Wenruns\Xml\example;
+namespace Wenruns\XmlTools\example;
 
 
 use Wenruns\XmlTools\XmlNode;
