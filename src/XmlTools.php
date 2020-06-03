@@ -7,7 +7,7 @@
  * Time: 10:40
  */
 
-namespace App\Services\Xml;
+namespace Wenruns\XmlTools;
 
 class XmlTools
 {
@@ -89,19 +89,19 @@ class XmlTools
 
     /**
      * 生成DOMDocument对象
-     * @param string $index
+     * @param string $domName
      * @param string $version
      * @param string $encoding
      * @return $this
      * @throws \Exception
      */
-    public function createDOMDocument($index = '', $version = '', $encoding = '')
+    public function createDOMDocument($domName = '', $version = '', $encoding = '')
     {
-        if ($index && isset($this->_dom[$index])) {
-            throw new \Exception('索引“' . $index . '”已被使用。');
+        if ($domName && isset($this->_dom[$domName])) {
+            throw new \Exception('不可创建重复的DOMDocument对象，' . $domName . '已存在！');
         }
 
-        $this->createDOM($index, $version, $encoding);
+        $this->createDOM($domName, $version, $encoding);
         return $this;
     }
 
@@ -191,17 +191,17 @@ class XmlTools
 
     /**
      * 切换DOMDocument对象
-     * @param $index
+     * @param $domName
      * @return $this
      * @throws \Exception
      */
-    public function switchDOM($index)
+    public function switchDOM($domName)
     {
-        if (isset($this->_dom[$index])) {
-            $this->_dom_active = $index;
+        if (isset($this->_dom[$domName])) {
+            $this->_dom_active = $domName;
             return $this;
         }
-        throw new \Exception('Can not found the DOMDocument object by given index:“' . $index . '”');
+        throw new \Exception('Can not found the DOMDocument object by given name:“' . $domName . '”');
     }
 
     /**
@@ -280,13 +280,13 @@ class XmlTools
 
     /**
      * 判断是否存在异常节点
-     * @param string $dom
+     * @param string $domName
      * @return bool
      */
-    public function existAbnormalNodes($dom = '')
+    public function existAbnormalNodes($domName = '')
     {
-        if ($dom) {
-            return !empty($this->_abnormal_nodes[$dom]);
+        if ($domName) {
+            return !empty($this->_abnormal_nodes[$domName]);
         } else {
             foreach ($this->_abnormal_nodes as $key => $item) {
                 if (!empty($item)) {

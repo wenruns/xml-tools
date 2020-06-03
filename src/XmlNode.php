@@ -7,7 +7,7 @@
  * Time: 11:13
  */
 
-namespace App\Services\Xml;
+namespace Wenruns\XmlTools;
 
 
 class XmlNode
