@@ -1,0 +1,23 @@
+{
+  "name": "xml/tools",
+  "description": "This is a set of xml generation tools",
+  "homepage": "",
+  "keywords": [
+    "xml生成工具",
+    "XML"
+  ],
+  "type": "composer-plugin",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "wenruns",
+      "email": "1562194488@qq.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Wenruns\\XmlTools\\": "src"
+    }
+  }
+}
